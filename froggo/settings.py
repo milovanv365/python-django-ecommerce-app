@@ -44,9 +44,11 @@ INSTALLED_APPS = [
 
     'oscar',
     'oscar.apps.analytics',
-    'oscar.apps.checkout',
+    # 'oscar.apps.checkout',
+    'apps.checkout.apps.CheckoutConfig',
     'oscar.apps.address',
-    'oscar.apps.shipping',
+    # 'oscar.apps.shipping',
+    'apps.shipping.apps.ShippingConfig',
     'oscar.apps.catalogue',
     'oscar.apps.catalogue.reviews',
     'oscar.apps.partner',
@@ -195,6 +197,10 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Cancelled': (),
     'Complete': (),
 }
+
+OSCAR_ALLOW_ANON_CHECKOUT = True
+
+OSCAR_HIDDEN_FEATURES = ['apps.shipping']
 
 # This dict defines the line statuses that will be set when an order's status
 # is changed
