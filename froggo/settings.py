@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 from oscar.defaults import *
 
+# Path helper
+location = lambda x: os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), x)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -49,7 +53,8 @@ INSTALLED_APPS = [
     'oscar.apps.address',
     # 'oscar.apps.shipping',
     'apps.shipping.apps.ShippingConfig',
-    'oscar.apps.catalogue',
+    # 'oscar.apps.catalogue',
+    'apps.catalogue.apps.CatalogueConfig',
     'oscar.apps.catalogue.reviews',
     'oscar.apps.partner',
     'oscar.apps.basket',
@@ -78,7 +83,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'haystack',
     'treebeard',
-     'sorl.thumbnail',
+    'sorl.thumbnail',
+    'easy_thumbnails',
     'django_tables2',
 ]
 
@@ -210,6 +216,7 @@ OSCAR_ORDER_STATUS_CASCADE = {
     'Complete': 'Shipped',
 }
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media')
 MEDIA_URL = '/media/'
 
 LOGGING = {

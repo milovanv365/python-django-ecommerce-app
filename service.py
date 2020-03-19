@@ -5,6 +5,11 @@ import random
 app = Flask(__name__)
 
 
+@app.route('/', methods=['GET'])
+def index():
+    return 'hello world'
+
+
 @app.route('/stock/<upc>', methods=['POST'])
 def get_info(upc):
     return jsonify(price=random.randint(1, 10), stock=random.randint(0, 12), upc=upc)
