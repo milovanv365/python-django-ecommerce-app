@@ -5,3 +5,5 @@ cache/
 **/public
 **/media
 *.jpg
+db.sqlite3
+db.sqlite.sandbox
