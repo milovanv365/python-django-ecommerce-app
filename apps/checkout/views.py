@@ -3,12 +3,12 @@ import requests
 
 
 class PaymentDetailsView(views.PaymentDetailsView):
-    pre_conditions = [
-        'check_basket_is_not_empty',
-        'check_basket_is_valid',
-    ]
+    # pre_conditions = [
+    #     'check_basket_is_not_empty',
+    #     'check_basket_is_valid',
+    # ]
 
-    template_name_preview = 'checkout/preview.html'
+    template_name_preview = 'oscar/checkout/preview.html'
     preview = True
 
     def post(self, request, *args, **kwargs):

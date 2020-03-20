@@ -1,1 +1,1 @@
-from oscar.apps.catalogue import views
+from oscar.apps.catalogue.views import *
