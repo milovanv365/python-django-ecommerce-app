@@ -12,7 +12,12 @@ def index():
 
 @app.route('/stock/<upc>', methods=['POST'])
 def get_info(upc):
-    return jsonify(price=random.randint(1, 10), stock=random.randint(0, 12), upc=upc)
+    price = random.randint(1, 10)
+    stock = random.randint(0, 12)
+    print(str(upc) + ':' + str(price))
+    return jsonify(price=price, stock=stock, upc=upc)
+
+    # return jsonify(price=random.randint(1, 10), stock=random.randint(0, 12), upc=upc)
 
 
 @app.route('/order', methods=['POST'])
