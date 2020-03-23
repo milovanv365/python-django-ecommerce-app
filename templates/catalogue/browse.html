@@ -114,7 +114,7 @@
                                 </p>
                                 <h3><a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">{{ product.get_title|truncatewords:4 }}</a></h3>
                                 <div class="product_price">
-                                    {% include "oscar/catalogue/partials/stock_record.html" %}
+{#                                    {% include "oscar/catalogue/partials/stock_record.html" %}#}
                                     {% if not product.is_parent and not product.has_options %}
                                         {% include "oscar/catalogue/partials/add_to_basket_form_compact.html" %}
                                     {% endif %}
