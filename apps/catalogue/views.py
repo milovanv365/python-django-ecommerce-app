@@ -1,8 +1,8 @@
 import json
+
 import requests
-from oscar.apps.catalogue.views import CatalogueView
-from oscar.core.loading import get_model
 from django import shortcuts
+from oscar.apps.catalogue.views import *
 
 
 class CatalogueView(CatalogueView):
@@ -21,3 +21,18 @@ class CatalogueView(CatalogueView):
     #         original_product = product.stockrecords.first()
     #         original_product.price_excl_tax = price
     #         original_product.save()
+
+    product_model = get_model('catalogue', 'product')
+    products = shortcuts.get_list_or_404(product_model)
+
+    for product in products:
+        upc = product.upc
+        image_url = 'http://localhost:5000/picture/{}'.format(upc)
+
+        original_image = product.images.first()
+        original_image.original = image_url
+        original_image.save()
+
+
+class ProductDetailView(ProductDetailView):
+    template_name = 'catalogue/detail.html'

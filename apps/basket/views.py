@@ -4,6 +4,10 @@ import requests
 from oscar.apps.basket.views import *
 
 
+class BasketView(BasketView):
+    template_name = 'basket/basket.html'
+
+
 class BasketAddView(BasketAddView):
     def post(self, request, *args, **kwargs):
         self.product = shortcuts.get_object_or_404(

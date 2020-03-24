@@ -6,10 +6,10 @@ class PaymentDetailsView(views.PaymentDetailsView):
     pre_conditions = [
         'check_basket_is_not_empty',
         'check_basket_is_valid',
-        # 'check_shipping_data_is_captured'
+        'check_user_email_is_captured'
     ]
 
-    template_name_preview = 'oscar/checkout/preview.html'
+    template_name_preview = 'checkout/preview.html'
     preview = True
 
     def post(self, request, *args, **kwargs):

@@ -1,4 +1,4 @@
-{% extends "oscar/layout_2_col.html" %}
+{% extends "layout_2_col.html" %}
 
 {% load basket_tags %}
 {% load category_tags %}
@@ -102,7 +102,8 @@
                             <article class="product_pod">
                                 <div class="image_container">
                                     <a>
-                                        <img src="http://localhost:5000/picture/{{product.upc}}" class="img-thumbnail" alt="{{ product.get_title }}">
+{#                                        <img src="http://localhost:5000/picture/{{product.upc}}" class="img-thumbnail" alt="{{ product.get_title }}">#}
+                                        <img src="{{ product.primary_image.original }}" alt="{{ product.get_title }}" class="thumbnail">
                                     </a>
                                 </div>
                                 <p class="star-rating {{ product.rating|as_stars }}">
