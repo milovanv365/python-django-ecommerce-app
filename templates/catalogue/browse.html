@@ -97,31 +97,7 @@
             <div>
                 <ol class="row">
                     {% for product in products %}
-                        <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-{#                            <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">{% render_product product %}</li>#}
-                            <article class="product_pod">
-                                <div class="image_container">
-                                    <a>
-{#                                        <img src="http://localhost:5000/picture/{{product.upc}}" class="img-thumbnail" alt="{{ product.get_title }}">#}
-                                        <img src="{{ product.primary_image.original }}" alt="{{ product.get_title }}" class="thumbnail">
-                                    </a>
-                                </div>
-                                <p class="star-rating {{ product.rating|as_stars }}">
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                </p>
-                                <h3><a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">{{ product.get_title|truncatewords:4 }}</a></h3>
-                                <div class="product_price">
-{#                                    {% include "oscar/catalogue/partials/stock_record.html" %}#}
-                                    {% if not product.is_parent and not product.has_options %}
-                                        {% include "oscar/catalogue/partials/add_to_basket_form_compact.html" %}
-                                    {% endif %}
-                                </div>
-                            </article>
-                        </li>
+                        <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">{% render_product product %}</li>
                     {% endfor %}
                 </ol>
                 {% include "oscar/partials/pagination.html" %}

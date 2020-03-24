@@ -31,11 +31,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["192.168.6.144", 'localhost', "127.0.0.1"]
 SITE_ID = 1           # wichtig !!
-
-# Application definition
-
 INSTALLED_APPS = [
     'apps',
+
+    # forking oscar apps to customize it
+    'apps.checkout.apps.CheckoutConfig',
+    'apps.shipping.apps.ShippingConfig',
+    'apps.catalogue.apps.CatalogueConfig',
+    'apps.basket.apps.BasketConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,17 +51,13 @@ INSTALLED_APPS = [
 
     'oscar',
     'oscar.apps.analytics',
-    # 'oscar.apps.checkout',
-    'apps.checkout.apps.CheckoutConfig',
     'oscar.apps.address',
+    # 'oscar.apps.checkout',
     # 'oscar.apps.shipping',
-    'apps.shipping.apps.ShippingConfig',
     # 'oscar.apps.catalogue',
-    'apps.catalogue.apps.CatalogueConfig',
+    # 'oscar.apps.basket',
     'oscar.apps.catalogue.reviews',
     'oscar.apps.partner',
-    # 'oscar.apps.basket',
-    'apps.basket.apps.BasketConfig',
     'oscar.apps.payment',
     'oscar.apps.offer',
     'oscar.apps.order',
@@ -87,6 +87,9 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'django_tables2',
 ]
+
+# Application definition
+
 
 AUTHENTICATION_BACKENDS = (
     'oscar.apps.customer.auth_backends.EmailBackend',
@@ -127,6 +130,9 @@ TEMPLATES = [
                 'oscar.apps.customer.notifications.context_processors.notifications',
                 'oscar.core.context_processors.metadata',
             ],
+            'libraries': {
+                'product_tags': 'templatetags.product_tags',
+            }
         },
     },
 ]
