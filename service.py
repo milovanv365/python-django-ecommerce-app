@@ -23,7 +23,7 @@ def get_info(upc):
 @app.route('/order', methods=['POST'])
 def set_order():
     print(request.json)
-    return jsonify(number=1300)
+    return jsonify(number=1301)
 
 
 @app.route('/picture/<upc>', methods=['GET'])
