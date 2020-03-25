@@ -17,9 +17,11 @@ class BasketAddView(BasketAddView):
         response = requests.post(url)
         data = json.loads(response.text)
         price = data['price']
+        stock = data['stock']
 
         original_product = self.product.stockrecords.first()
         original_product.price_excl_tax = price
+        original_product.num_in_stock = stock
         original_product.save()
 
         return super().post(request, *args, **kwargs)
