@@ -7,6 +7,16 @@ from oscar.apps.basket.views import *
 class BasketView(BasketView):
     template_name = 'basket/basket.html'
 
+    def json_response(self, ctx, flash_messages):
+        basket_html = render_to_string(
+            'basket/partials/basket_content.html',
+            context=ctx, request=self.request)
+
+        return JsonResponse({
+            'content_html': basket_html,
+            'messages': flash_messages.as_dict()
+        })
+
 
 class BasketAddView(BasketAddView):
     def post(self, request, *args, **kwargs):
