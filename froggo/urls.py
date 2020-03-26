@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.apps import apps
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.sitemaps import views
 
@@ -30,8 +31,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # path('admin/', admin.site.urls),  # > Django-2.0
 
-    url(r'^', include(apps.get_app_config('oscar').urls[0])),
-    # path('', include(apps.get_app_config('oscar').urls[0])),  # > Django-2.0
+    # url(r'^', include(apps.get_app_config('oscar').urls[0])),
+    # # path('', include(apps.get_app_config('oscar').urls[0])),  # > Django-2.0
 
     # include a basic sitemap
     url(r'^sitemap\.xml$', views.index,
@@ -40,3 +41,8 @@ urlpatterns = [
         {'sitemaps': base_sitemaps},
         name='django.contrib.sitemaps.views.sitemap')
 ]
+
+urlpatterns += i18n_patterns(
+    # Oscar's normal URLs
+    url(r'^', include(apps.get_app_config('oscar').urls[0])),
+)
