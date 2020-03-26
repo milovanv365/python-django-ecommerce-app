@@ -17,8 +17,6 @@ def get_info(upc):
     print(str(upc) + ':' + str(price) + ',' + str(stock))
     return jsonify(price=price, stock=stock, upc=upc)
 
-    # return jsonify(price=random.randint(1, 10), stock=random.randint(0, 12), upc=upc)
-
 
 @app.route('/order', methods=['POST'])
 def set_order():

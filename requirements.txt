@@ -3,3 +3,4 @@ flask
 sorl-thumbnail
 easy_thumbnails
 requests
+ipython
