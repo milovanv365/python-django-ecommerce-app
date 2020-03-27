@@ -8,13 +8,13 @@
     <article class="product_pod">
         {% block product_image %}
             <div class="image_container">
-{#                {% with image=product.primary_image %}#}
+                {% with image=product.primary_image %}
 {#                    {% oscar_thumbnail image.original "x155" upscale=False as thumb %}#}
-{#                    <a href="{{ product.get_absolute_url }}">#}
+                    <a href="{{ product.get_absolute_url }}">
 {#                        <img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="thumbnail">#}
-{#                    </a>#}
-{#                {% endwith %}#}
-                <img src="{{ product.primary_image.original }}" alt="{{ product.get_title }}" class="thumbnail">
+                        <img src="{{ image }}" alt="{{ product.get_title }}" class="thumbnail">
+                    </a>
+                {% endwith %}
             </div>
         {% endblock %}
 

@@ -50,11 +50,11 @@
             <div class="thumbnail">
                 <div class="carousel-inner">
                     <div class="item active">
-{#                    {% with image=product.primary_image %}#}
+                    {% with image=product.primary_image %}
 {#                        {% oscar_thumbnail image.original "440x400" upscale=False as thumb %}#}
 {#                        <img src="{{ thumb.url }}" alt="{{ product.get_title }}" />#}
-{#                    {% endwith %}#}
-                    <img src="{{ product.primary_image.original }}" alt="{{ product.get_title }}" class="thumbnail" width="440" height="400">
+                        <img src="{{ image }}" alt="{{ product.get_title }}" class="thumbnail" width="440" height="400">
+                    {% endwith %}
                     </div>
                 </div>
             </div>
