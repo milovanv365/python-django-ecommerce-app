@@ -129,9 +129,6 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'easy_thumbnails',
     'django_tables2',
-
-    # Django apps that the sandbox depends on
-    'django.contrib.sitemaps',
 ]
 
 # Application definition
@@ -155,11 +152,6 @@ MIDDLEWARE = [
 
     # Allow languages to be selected
     'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.http.ConditionalGetMiddleware',
-    'django.middleware.common.CommonMiddleware',
-
-    # Ensure a valid basket is added to the request instance for every request
-    'oscar.apps.basket.middleware.BasketMiddleware',
 ]
 
 ROOT_URLCONF = 'froggo.urls'

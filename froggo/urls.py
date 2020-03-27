@@ -17,9 +17,7 @@ from django.apps import apps
 from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from django.contrib.sitemaps import views
 
-from apps.sitemaps import base_sitemaps
 
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
@@ -32,14 +30,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),  # > Django-2.0
 
     # url(r'^', include(apps.get_app_config('oscar').urls[0])),
-    # # path('', include(apps.get_app_config('oscar').urls[0])),  # > Django-2.0
-
-    # include a basic sitemap
-    url(r'^sitemap\.xml$', views.index,
-        {'sitemaps': base_sitemaps}),
-    url(r'^sitemap-(?P<section>.+)\.xml$', views.sitemap,
-        {'sitemaps': base_sitemaps},
-        name='django.contrib.sitemaps.views.sitemap')
+    # path('', include(apps.get_app_config('oscar').urls[0])),  # > Django-2.0
 ]
 
 urlpatterns += i18n_patterns(

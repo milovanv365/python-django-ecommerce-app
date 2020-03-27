@@ -12,9 +12,14 @@ class PaymentDetailsView(PaymentDetailsView):
                shipping_charge, billing_address, order_total,
                payment_kwargs=None, order_kwargs=None):
 
+        if user.is_anonymous:
+            user_email = self.checkout_session.get_guest_email()
+        else:
+            user_email = user.email
+
         info = {
             'order': {
-                'customer': user.email,
+                'customer': user_email,
                 'order_total': {
                     'currency': order_total.currency,
                     'excl_tax': str(order_total.excl_tax)
