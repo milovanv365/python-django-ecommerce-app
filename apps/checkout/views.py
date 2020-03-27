@@ -1,5 +1,6 @@
 import json
 
+from django import shortcuts
 from oscar.apps.checkout.views import *
 import requests
 
@@ -17,13 +18,30 @@ class PaymentDetailsView(PaymentDetailsView):
         else:
             user_email = user.email
 
+        items = []
+        basket_model = get_model('basket', 'basket')
+        product_model = get_model('catalogue', 'product')
+        basket_object = shortcuts.get_object_or_404(basket_model, pk=basket.id)
+
+        basket_lines = basket_object.lines.all()
+        for line in basket_lines:
+            product = shortcuts.get_object_or_404(product_model, pk=line.product_id)
+            upc = product.upc
+            quantity = line.quantity
+            item = {
+                'upc': upc,
+                'quantity': quantity
+            }
+            items.append(item)
+
         info = {
             'order': {
                 'customer': user_email,
                 'order_total': {
                     'currency': order_total.currency,
                     'excl_tax': str(order_total.excl_tax)
-                }
+                },
+                'items': items
             }
         }
         response = requests.post('http://localhost:5000/order', json=info)
