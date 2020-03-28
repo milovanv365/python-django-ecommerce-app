@@ -289,3 +289,7 @@ LOGGING = {
 }
 
 LOGGING = {}
+
+EMAIL_BACKEND = ("django.core.mail.backends.console.EmailBackend")
+LANGUAGE_CODE = 'de'
+OSCAR_SHOP_NAME = "KVB"

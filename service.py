@@ -21,8 +21,9 @@ def get_info(upc):
 @app.route('/order', methods=['POST'])
 def set_order():
     print(request.json)
-    return jsonify(number=random.randint(1000, 9999))
-
+    t = jsonify(number=random.randint(2000, 9999))
+    print (t)
+    return t
 
 @app.route('/picture/<upc>', methods=['GET'])
 def get_picture(upc):
