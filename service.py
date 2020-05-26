@@ -14,20 +14,17 @@ def index():
 def get_info(upc):
     price = random.randint(1, 10)
     stock = random.randint(0, 12)
-    print(str(upc) + ':' + str(price) + ',' + str(stock))
     return jsonify(price=price, stock=stock, upc=upc)
 
 
 @app.route('/order', methods=['POST'])
 def set_order():
-    print(request.json)
     t = jsonify(number=random.randint(2000, 9999))
-    print (t)
     return t
+
 
 @app.route('/picture/<upc>', methods=['GET'])
 def get_picture(upc):
-    print('picture for ' + upc)
     file_path = 'media/images/' + upc + '.jpg'
     return app.send_static_file(file_path)
 
